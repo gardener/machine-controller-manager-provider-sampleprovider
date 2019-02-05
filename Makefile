@@ -24,7 +24,7 @@ rename-provider:
 	@./hack/rename-provider ${PROVIDER_NAME}
 
 .PHONY: rename-project
-rename-provider:
+rename-project:
 	@./hack/rename-project ${PROJECT_NAME}
 
 #########################################

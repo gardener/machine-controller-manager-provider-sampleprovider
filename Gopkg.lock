@@ -11,11 +11,11 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:a68a1cd3d22a6a15adcdc5aecff97e0efaaad09b7c5aeaf52187c171647c03d0"
+  digest = "1:19b48fa2a9f320dbaced3b44b72206f4970b05c811764906b9879d5ee5fb8c41"
   name = "github.com/gardener/machine-spec"
   packages = ["lib/go/cmi"]
   pruneopts = "UT"
-  revision = "8107849841a411fa4991586735f67ceccf963406"
+  revision = "e6df78e9701c28c11192bed048a76ab09aa29f61"
 
 [[projects]]
   branch = "master"
@@ -83,11 +83,11 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:aba2486bbebaadd1f62bde3c363ddbd984efade895833d86ed069f586fd9e899"
+  digest = "1:969c44c96e9866e912a16e282a362cf045b64202107424983fe8abc3373d1eab"
   name = "golang.org/x/sys"
   packages = ["unix"]
   pruneopts = "UT"
-  revision = "2970a3744de33489e46eba373c73655bc2377116"
+  revision = "41f3e6584952bb034a481797859f6ab34b6803bd"
 
 [[projects]]
   digest = "1:a2ab62866c75542dd18d2b069fec854577a20211d7c0ea6ae746072a1dccdd18"
@@ -118,7 +118,7 @@
   name = "google.golang.org/genproto"
   packages = ["googleapis/rpc/status"]
   pruneopts = "UT"
-  revision = "8ac453e89fca495c0d17f98932642f392e2a11f3"
+  revision = "4b09977fb92221987e99d190c8f88f2c92727a29"
 
 [[projects]]
   digest = "1:9ab5a33d8cb5c120602a34d2e985ce17956a4e8c2edce7e6961568f95e40c09a"

@@ -33,4 +33,4 @@ rename-project:
 
 .PHONY: revendor
 revendor:
-	@dep ensure -v
+	@dep ensure -v --update

@@ -12,11 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-PROVIDER_NAME		:= SampleProvider
-PROJECT_NAME		:= gardener
-BINARY_PATH			:= bin/
-IMAGE_REPOSITORY	:= docker-repository-link-goes-here
-IMAGE_TAG 			:= $(shell cat VERSION)
+PROVIDER_NAME       := SampleProvider
+PROJECT_NAME        := gardener
+BINARY_PATH         := bin/
+IMAGE_REPOSITORY    := docker-repository-link-goes-here
+IMAGE_TAG           := $(shell cat VERSION)
 
 #########################################
 # Rules for running helper scripts
@@ -24,11 +24,11 @@ IMAGE_TAG 			:= $(shell cat VERSION)
 
 .PHONY: rename-provider
 rename-provider:
-	@./hack/rename-provider ${PROVIDER_NAME}
+    @./hack/rename-provider ${PROVIDER_NAME}
 
 .PHONY: rename-project
 rename-project:
-	@./hack/rename-project ${PROJECT_NAME}
+    @./hack/rename-project ${PROJECT_NAME}
 
 #########################################
 # Rules for re-vendoring
@@ -36,7 +36,7 @@ rename-project:
 
 .PHONY: revendor
 revendor:
-	@dep ensure -v --update
+    @dep ensure -v --update
 
 #########################################
 # Rules for build/release
@@ -47,14 +47,14 @@ release: build-local build docker-image docker-push rename-binaries
 
 .PHONY: build-local
 build-local:
-	go build \
+    go build \
     -v \
     -o ${BINARY_PATH}/cmi-server \
     app/controller/cmi-server.go
 
 .PHONY: build
 build:
-	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build \
+    CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build \
     -a \
     -v \
     -o ${BINARY_PATH}/rel/cmi-server \
@@ -62,21 +62,21 @@ build:
 
 .PHONY: docker-image
 docker-image:
-	@if [[ ! -f ${BINARY_PATH}/rel/cmi-server ]]; then echo "No binary found. Please run 'make build'"; false; fi
-	@docker build -t $(IMAGE_REPOSITORY):$(IMAGE_TAG) .
+    @if [[ ! -f ${BINARY_PATH}/rel/cmi-server ]]; then echo "No binary found. Please run 'make build'"; false; fi
+    @docker build -t $(IMAGE_REPOSITORY):$(IMAGE_TAG) .
 
 .PHONY: docker-push
 docker-push:
-	@if ! docker images $(IMAGE_REPOSITORY) | awk '{ print $$2 }' | grep -q -F $(IMAGE_TAG); then echo "$(IMAGE_REPOSITORY) version $(IMAGE_TAG) is not yet built. Please run 'make docker-images'"; false; fi
-	@gcloud docker -- push $(IMAGE_REPOSITORY):$(IMAGE_TAG)
+    @if ! docker images $(IMAGE_REPOSITORY) | awk '{ print $$2 }' | grep -q -F $(IMAGE_TAG); then echo "$(IMAGE_REPOSITORY) version $(IMAGE_TAG) is not yet built. Please run 'make docker-images'"; false; fi
+    @gcloud docker -- push $(IMAGE_REPOSITORY):$(IMAGE_TAG)
 
 .PHONY: rename-binaries
 rename-binaries:
-	@if [[ -f bin/cmi-server ]]; then cp bin/cmi-server cmi-server-darwin-amd64; fi
-	@if [[ -f bin/rel/cmi-server ]]; then cp bin/rel/cmi-server cmi-server-linux-amd64; fi
+    @if [[ -f bin/cmi-server ]]; then cp bin/cmi-server cmi-server-darwin-amd64; fi
+    @if [[ -f bin/rel/cmi-server ]]; then cp bin/rel/cmi-server cmi-server-linux-amd64; fi
 
 .PHONY: clean
 clean:
-	@rm -rf bin/
-	@rm -f *linux-amd64
-	@rm -f *darwin-amd64
+    @rm -rf bin/
+    @rm -f *linux-amd64
+    @rm -f *darwin-amd64

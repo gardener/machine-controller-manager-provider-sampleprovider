@@ -43,16 +43,16 @@ import (
 // REQUIRED METHOD
 //
 // REQUEST PARAMETERS (cmi.CreateMachineRequest)
-// Name 				string				Contains the identification name/tag used to link the machine object with VM on cloud provider
-// ProviderSpec			bytes(blob)			Template/Configuration of the machine to be created is given by at the provider
-// Secrets				map<string,bytes>	(Optional) Contains a map from string to string contains any cloud specific secrets that can be used by the provider
+// Name                 string              Contains the identification name/tag used to link the machine object with VM on cloud provider
+// ProviderSpec         bytes(blob)         Template/Configuration of the machine to be created is given by at the provider
+// Secrets              map<string,bytes>   (Optional) Contains a map from string to string contains any cloud specific secrets that can be used by the provider
 //
 // RESPONSE PARAMETERS (cmi.CreateMachineResponse)
-// MachineID			string				Unique identification of the VM at the cloud provider. This could be the same/different from req.Name.
-//											MachineID typically matches with the node.Spec.ProviderID on the node object.
-//											Eg: gce://project-name/region/vm-machineID
-// NodeName				string				Returns the name of the node-object that the VM register's with Kubernetes.
-// 											This could be different from req.Name as well
+// MachineID            string              Unique identification of the VM at the cloud provider. This could be the same/different from req.Name.
+//                                          MachineID typically matches with the node.Spec.ProviderID on the node object.
+//                                          Eg: gce://project-name/region/vm-machineID
+// NodeName             string              Returns the name of the node-object that the VM register's with Kubernetes.
+//                                          This could be different from req.Name as well
 //
 // OPTIONAL IMPLEMENTATION LOGIC
 // It is optionally expected by the safety controller to use an identification mechanisms to map the VM Created by a providerSpec.
@@ -69,8 +69,8 @@ func (ms *MachineServer) CreateMachine(ctx context.Context, req *cmi.CreateMachi
 // REQUIRED METHOD
 //
 // REQUEST PARAMETERS (cmi.DeleteMachineRequest)
-// MachineID 		string				Contains the unique identification of the VM at the cloud provider
-// Secrets			map<string,bytes>	(Optional) Contains a map from string to string contains any cloud specific secrets that can be used by the provider
+// MachineID        string              Contains the unique identification of the VM at the cloud provider
+// Secrets          map<string,bytes>   (Optional) Contains a map from string to string contains any cloud specific secrets that can be used by the provider
 //
 func (ms *MachineServer) DeleteMachine(ctx context.Context, req *cmi.DeleteMachineRequest) (*cmi.DeleteMachineResponse, error) {
 	// Log messages to track start of request
@@ -81,12 +81,12 @@ func (ms *MachineServer) DeleteMachine(ctx context.Context, req *cmi.DeleteMachi
 // GetMachine handles a machine details fetching request
 //
 // REQUEST PARAMETERS (cmi.GetMachineRequest)
-// MachineID 		string				Contains the unique identification of the VM at the cloud provider
-// Secrets			map<string,bytes>	(Optional) Contains a map from string to string contains any cloud specific secrets that can be used by the provider
+// MachineID        string              Contains the unique identification of the VM at the cloud provider
+// Secrets          map<string,bytes>   (Optional) Contains a map from string to string contains any cloud specific secrets that can be used by the provider
 //
 // RESPONSE PARAMETERS (cmi.GetMachineResponse)
-// Exists			bool				Returns a boolean value which is set to true when it exists on the cloud provider
-// Status			enum 				Contains the status of the machine on the cloud provider mapped to the enum values - {Unknown, Stopped, Running}
+// Exists           bool                Returns a boolean value which is set to true when it exists on the cloud provider
+// Status           enum                Contains the status of the machine on the cloud provider mapped to the enum values - {Unknown, Stopped, Running}
 //
 func (ms *MachineServer) GetMachine(ctx context.Context, req *cmi.GetMachineRequest) (*cmi.GetMachineResponse, error) {
 	// Log messages to track start of request
@@ -99,12 +99,12 @@ func (ms *MachineServer) GetMachine(ctx context.Context, req *cmi.GetMachineRequ
 // you have used to identify machines created by a providerSpec. It could be tags/resource-groups etc
 //
 // REQUEST PARAMETERS (cmi.ListMachinesRequest)
-// ProviderSpec		bytes(blob)			Template/Configuration of the machine that wouldn've been created by this ProviderSpec (Machine Class)
-// Secrets			map<string,bytes>	(Optional) Contains a map from string to string contains any cloud specific secrets that can be used by the provider
+// ProviderSpec     bytes(blob)         Template/Configuration of the machine that wouldn've been created by this ProviderSpec (Machine Class)
+// Secrets          map<string,bytes>   (Optional) Contains a map from string to string contains any cloud specific secrets that can be used by the provider
 //
 // RESPONSE PARAMETERS (cmi.ListMachinesResponse)
-// MachineList		map<string,string>	A map containing the keys as the MachineID and value as the MachineName
-//										for all machine's who where possibilly created by this ProviderSpec
+// MachineList      map<string,string>  A map containing the keys as the MachineID and value as the MachineName
+//                                      for all machine's who where possibilly created by this ProviderSpec
 //
 func (ms *MachineServer) ListMachines(ctx context.Context, req *cmi.ListMachinesRequest) (*cmi.ListMachinesResponse, error) {
 	// Log messages to track start of request
@@ -116,8 +116,8 @@ func (ms *MachineServer) ListMachines(ctx context.Context, req *cmi.ListMachines
 // OPTIONAL METHOD
 //
 // REQUEST PARAMETERS (cmi.ShutDownMachineRequest)
-// MachineID 		string				Contains the unique identification of the VM at the cloud provider
-// Secrets			map<string,bytes>	(Optional) Contains a map from string to string contains any cloud specific secrets that can be used by the provider
+// MachineID        string              Contains the unique identification of the VM at the cloud provider
+// Secrets          map<string,bytes>   (Optional) Contains a map from string to string contains any cloud specific secrets that can be used by the provider
 //
 func (ms *MachineServer) ShutDownMachine(ctx context.Context, req *cmi.ShutDownMachineRequest) (*cmi.ShutDownMachineResponse, error) {
 	// Log messages to track start of request

@@ -129,6 +129,7 @@ func (ms *MachinePlugin) GetMachineStatus(ctx context.Context, req *cmi.GetMachi
 func (ms *MachinePlugin) ListMachines(ctx context.Context, req *cmi.ListMachinesRequest) (*cmi.ListMachinesResponse, error) {
 	// Log messages to track start of request
 	glog.V(2).Infof("List machines request has been received")
+	glog.V(4).Infof("ProviderSpec = %q", req.ProviderSpec)
 	return nil, status.Error(codes.Unimplemented, "")
 }
 

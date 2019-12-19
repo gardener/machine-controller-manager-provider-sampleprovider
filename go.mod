@@ -3,7 +3,7 @@ module github.com/gardener/machine-controller-manager-provider-sampleprovider
 go 1.12
 
 require (
-	github.com/gardener/machine-spec v0.0.0-20191122115249-3c5d92860015 // 0.4.0
+	github.com/gardener/machine-spec v0.5.0
 	github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b
 	github.com/spf13/cobra v0.0.5
 	golang.org/x/net v0.0.0-20190812203447-cdfb69ac37fc

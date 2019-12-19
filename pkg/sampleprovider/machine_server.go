@@ -75,6 +75,7 @@ func (ms *MachinePlugin) CreateMachine(ctx context.Context, req *cmi.CreateMachi
 // MachineName          string              Contains the name of the machine object for the backing VM(s) have to be deleted
 // ProviderSpec         bytes(blob)         Template/Configuration of the machine to be deleted is given by at the provider
 // Secrets              map<string,bytes>   (Optional) Contains a map from string to string contains any cloud specific secrets that can be used by the provider
+// ProviderID           string              (Optional) Unique identification of the VM at the cloud provider.
 // LastKnownState       bytes(blob)         (Optional) Last known state of VM during last operation. Could be helpful to continue operation from previous state
 //
 // RESPONSE PARAMETERS (cmi.DeleteMachineResponse)
@@ -94,6 +95,7 @@ func (ms *MachinePlugin) DeleteMachine(ctx context.Context, req *cmi.DeleteMachi
 // MachineName          string              Contains the name of the machine object for whose status is to be retrieved
 // ProviderSpec         bytes(blob)         Template/Configuration of the machine whose status is to be retrieved
 // Secrets              map<string,bytes>   (Optional) Contains a map from string to string contains any cloud specific secrets that can be used by the provider
+// ProviderID           string              (Optional) Unique identification of the VM at the cloud provider.
 //
 // RESPONSE PARAMETERS (cmi.GetMachineStatueResponse)
 // ProviderID           string              Unique identification of the VM at the cloud provider. This could be the same/different from req.MachineName.
@@ -159,9 +161,11 @@ func (ms *MachinePlugin) GetVolumeIDs(ctx context.Context, req *cmi.GetVolumeIDs
 // OPTIONAL METHOD
 //
 // REQUEST PARAMETERS (cmi.ShutDownMachineRequest)
+// MachineName           string              Contains the name of the machine object for whose status is to be retrived
 // ProviderSpec          bytes(blob)         Template/Configuration of the machine that wouldn've been created by this ProviderSpec (Machine Class)
 // Secrets               map<string,bytes>   (Optional) Contains a map from string to string contains any cloud specific secrets that can be used by the provider
-// LastKnownState        bytes(blob)        (Optional) Last known state of VM during last operation. Could be helpful to continue operation from previous state
+// ProviderID            string              (Optional) Unique identification of the VM at the cloud provider.
+// LastKnownState        bytes(blob)         (Optional) Last known state of VM during last operation. Could be helpful to continue operation from previous state
 //
 // RESPONSE PARAMETERS (cmi.DeleteMachineResponse)
 // LastKnownState        bytes(blob)        (Optional) Last known state of VM during the current operation.

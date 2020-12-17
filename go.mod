@@ -3,7 +3,7 @@ module github.com/gardener/machine-controller-manager-provider-sampleprovider
 go 1.13
 
 require (
-	github.com/gardener/machine-controller-manager v0.29.0
+	github.com/gardener/machine-controller-manager v0.36.0
 	github.com/onsi/ginkgo v1.12.0
 	github.com/onsi/gomega v1.9.0
 	github.com/prometheus/client_golang v1.5.1 // indirect
@@ -16,7 +16,6 @@ require (
 )
 
 replace (
-	github.com/gardener/machine-controller-manager => github.com/gardener/machine-controller-manager v0.34.3
 	github.com/onsi/gomega => github.com/onsi/gomega v1.5.0
 	github.com/prometheus/client_golang => github.com/prometheus/client_golang v0.9.2
 	k8s.io/api => k8s.io/api v0.0.0-20190918155943-95b840bb6a1f // kubernetes-1.16.0

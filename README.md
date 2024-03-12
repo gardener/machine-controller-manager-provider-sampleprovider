@@ -1,4 +1,6 @@
 # machine-controller-manager-provider-sampleprovider
+[![REUSE status](https://api.reuse.software/badge/github.com/gardener/machine-controller-manager-provider-sampleprovider)](https://api.reuse.software/info/github.com/gardener/machine-controller-manager-provider-sampleprovider)
+
 Out of tree (controller based) implementation for `SampleProvider` as a new provider.
 
 ## About
